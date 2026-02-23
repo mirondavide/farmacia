@@ -141,6 +141,7 @@
         .animate-on-scroll.delay-6 { transition-delay: 0.6s; }
         .animate-on-scroll.delay-7 { transition-delay: 0.7s; }
         .animate-on-scroll.delay-8 { transition-delay: 0.8s; }
+        .animate-on-scroll.delay-9 { transition-delay: 0.9s; }
 
         /* ========== NAVBAR ========== */
         .navbar {
@@ -743,7 +744,7 @@
 
         .about-floating-card {
             position: absolute;
-            bottom: -20px;
+            bottom: -52px;
             right: -20px;
             background: var(--white);
             border-radius: var(--radius-md);
@@ -752,7 +753,6 @@
             display: flex;
             align-items: center;
             gap: 14px;
-            animation: float 4s ease-in-out infinite;
         }
 
         .about-floating-card-icon {
@@ -842,18 +842,20 @@
         .services-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
+            gap: 20px;
         }
 
         .service-card {
-            background: var(--white);
-            border: 1px solid rgba(0, 137, 123, 0.08);
-            border-radius: var(--radius-lg);
-            padding: 36px 28px;
-            text-align: center;
+            background: var(--off-white);
+            border: none;
+            border-radius: var(--radius-md);
+            padding: 32px 24px;
+            text-align: left;
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         .service-card::before {
@@ -861,33 +863,31 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), #26A69A);
-            transform: scaleX(0);
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+            opacity: 0;
             transition: var(--transition);
-            transform-origin: left;
         }
 
         .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-            border-color: transparent;
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
         }
 
         .service-card:hover::before {
-            transform: scaleX(1);
+            opacity: 1;
         }
 
         .service-icon {
-            width: 68px;
-            height: 68px;
+            width: 48px;
+            height: 48px;
             background: var(--primary-light);
-            border-radius: var(--radius-md);
+            border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
+            margin-bottom: 16px;
             transition: var(--transition);
         }
 
@@ -896,8 +896,8 @@
         }
 
         .service-icon svg {
-            width: 32px;
-            height: 32px;
+            width: 24px;
+            height: 24px;
             fill: var(--primary);
             transition: var(--transition);
         }
@@ -907,16 +907,147 @@
         }
 
         .service-card h3 {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
-            color: var(--primary-dark);
-            margin-bottom: 10px;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
         }
 
         .service-card p {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: var(--text-light);
-            line-height: 1.6;
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        .service-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 8px 0 0;
+        }
+
+        .service-card ul li {
+            font-size: 0.82rem;
+            color: var(--text-medium);
+            padding: 4px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            line-height: 1.4;
+        }
+
+        .service-card ul li::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            background: var(--primary);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* ========== ESAMI DEL SANGUE ========== */
+        .blood-tests {
+            background: var(--off-white);
+        }
+
+        .blood-tests-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .blood-tests-info h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .blood-tests-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .blood-tests-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .blood-test-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 18px;
+            background: var(--white);
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+
+        .blood-test-item:hover {
+            box-shadow: var(--shadow-sm);
+            transform: translateX(4px);
+        }
+
+        .blood-test-item .test-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .blood-test-item span {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .blood-tests-aside {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            border-radius: var(--radius-lg);
+            padding: 40px 36px;
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .blood-tests-aside svg {
+            width: 48px;
+            height: 48px;
+            fill: rgba(255, 255, 255, 0.9);
+        }
+
+        .blood-tests-aside h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .blood-tests-aside p {
+            font-size: 0.88rem;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+
+        .blood-tests-aside .aside-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.88rem;
+            font-weight: 500;
+        }
+
+        .blood-tests-aside .aside-feature svg {
+            width: 20px;
+            height: 20px;
+            fill: rgba(255,255,255,0.85);
         }
 
         /* ========== ORARI E TURNI ========== */
@@ -1585,9 +1716,22 @@
             .footer-content {
                 grid-template-columns: 1fr 1fr;
             }
+
+            .blood-tests-content {
+                gap: 32px;
+            }
         }
 
         @media (max-width: 768px) {
+
+            .blood-tests-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .blood-tests-aside {
+                padding: 32px 24px;
+            }
             .nav-links {
                 position: fixed;
                 top: 0;
@@ -1657,7 +1801,7 @@
             }
 
             .service-card {
-                padding: 24px 16px;
+                padding: 24px 20px;
             }
 
             .reviews-grid {
@@ -1743,6 +1887,7 @@
             <div class="nav-links" id="navLinks">
                 <a href="#about">La Farmacia</a>
                 <a href="#services">Servizi</a>
+                <a href="#blood-tests">Esami</a>
                 <a href="#schedule">Orari</a>
                 <a href="#reviews">Recensioni</a>
                 <a href="#contact" class="nav-cta">Contatti</a>
@@ -1902,7 +2047,7 @@
                 <!-- Servizio 1 -->
                 <div class="service-card animate-on-scroll delay-1">
                     <div class="service-icon">
-                        <svg viewBox="0 0 24 24"><path d="M4.02 6.21C2.72 7.53 2 9.35 2 11.28c0 4.84 5.43 9.58 9.1 12.27.4.29.96.29 1.36 0C16.18 20.84 22 15.82 22 11.28c0-1.93-.72-3.75-2.02-5.07C18.65 4.87 16.84 4 14.88 4c-1.52 0-2.9.57-3.88 1.55C10.02 4.57 8.64 4 7.12 4 5.16 4 3.35 4.87 4.02 6.21zM12 19.5c-4.4-3.24-8-7.05-8-8.22 0-1.26.52-2.45 1.46-3.36C6.42 7 7.74 6.5 7.12 6.5c.98 0 1.87.38 2.63 1.14L12 9.89l2.25-2.25C15.01 6.88 15.9 6.5 16.88 6.5c1.38 0 2.7.5 3.66 1.42.94.91 1.46 2.1 1.46 3.36 0 1.17-3.6 4.98-8 8.22h-2z"/><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 10h-4v4h-4v-4H6v-4h4V5h4v4h4v4z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 10h-4v4h-4v-4H6v-4h4V5h4v4h4v4z"/></svg>
                     </div>
                     <h3>Farmaci e Consulenza</h3>
                     <p>Farmaci da banco e con ricetta medica. Consulenza farmaceutica personalizzata e competente.</p>
@@ -1969,6 +2114,59 @@
                     </div>
                     <h3>Elettromedicali</h3>
                     <p>Vendita e noleggio di apparecchi elettromedicali: aerosol, misuratori di pressione, glucometri e altro.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ESAMI DEL SANGUE -->
+    <section class="section blood-tests" id="blood-tests">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag animate-on-scroll">
+                    <svg viewBox="0 0 24 24"><path d="M7 2v2H5v2h2v2H5v2h2v2H5v2h2v2.97C5 18.95 7.05 21 9.03 21h5.94C16.95 21 19 18.95 19 16.97V2H7zm10 14.97c0 .57-.2 1.09-.52 1.51-.52.68-1.33 1.12-2.25 1.45-.48.17-.99.07-1.35-.29-.36-.36-.46-.87-.29-1.35.33-.92.77-1.73 1.45-2.25.42-.32.94-.52 1.51-.52h1.45v1.45zM9 4h8v2H9V4zm0 4h8v2H9V8z"/></svg>
+                    Esami del Sangue
+                </div>
+                <h2 class="section-title animate-on-scroll">Analisi del <span style="color:var(--primary)">Sangue</span> in Farmacia</h2>
+                <p class="section-subtitle animate-on-scroll">Effettua i tuoi esami direttamente in farmacia, senza attese e con risultati rapidi.</p>
+            </div>
+
+            <div class="blood-tests-content">
+                <div class="blood-tests-info animate-on-scroll">
+                    <h3>Esami disponibili</h3>
+                    <p>La Farmacia Pettenati offre un servizio di analisi del sangue rapido e accessibile. Non serve prenotazione, i risultati sono disponibili in pochi minuti.</p>
+                    <div class="blood-tests-list">
+                        <div class="blood-test-item animate-on-scroll delay-1">
+                            <div class="test-dot"></div>
+                            <span>Colesterolo totale</span>
+                        </div>
+                        <div class="blood-test-item animate-on-scroll delay-2">
+                            <div class="test-dot"></div>
+                            <span>Colesterolo HDL</span>
+                        </div>
+                        <div class="blood-test-item animate-on-scroll delay-3">
+                            <div class="test-dot"></div>
+                            <span>Colesterolo LDL</span>
+                        </div>
+                        <div class="blood-test-item animate-on-scroll delay-4">
+                            <div class="test-dot"></div>
+                            <span>Emoglobina glicata</span>
+                        </div>
+                        <div class="blood-test-item animate-on-scroll delay-5">
+                            <div class="test-dot"></div>
+                            <span>Glicemia</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blood-tests-aside animate-on-scroll delay-2">
+                    <svg viewBox="0 0 24 24"><path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3z"/></svg>
+                    <h4>Perché fare gli esami in farmacia?</h4>
+                    <p>Un modo semplice e veloce per tenere sotto controllo la tua salute, con la consulenza del farmacista e senza bisogno di appuntamento.</p>
+                    <div class="aside-feature">
+                        <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        Consulenza del farmacista
+                    </div>
                 </div>
             </div>
         </div>
@@ -2173,6 +2371,26 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Review 6 -->
+                <div class="review-card animate-on-scroll delay-6">
+                    <div class="review-card-quote">"</div>
+                    <div class="review-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <p class="review-text">"Ho fatto gli esami del sangue direttamente in farmacia, velocissimo e senza prenotazione. Il farmacista mi ha anche spiegato i risultati con pazienza. Servizio eccellente."</p>
+                    <div class="review-author">
+                        <div class="review-avatar">LG</div>
+                        <div class="review-author-info">
+                            <h4>Luca G.</h4>
+                            <span>Cliente abituale</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="reviews-summary animate-on-scroll">
@@ -2186,7 +2404,7 @@
                             <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                             <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                         </div>
-                        <span>Media su 5 recensioni</span>
+                        <span></span>
                     </div>
                 </div>
             </div>
@@ -2292,6 +2510,7 @@
                     <div class="footer-links">
                         <a href="#about">La Farmacia</a>
                         <a href="#services">I Nostri Servizi</a>
+                        <a href="#blood-tests">Esami del Sangue</a>
                         <a href="#schedule">Orari e Turni</a>
                         <a href="#reviews">Recensioni</a>
                         <a href="#contact">Contatti</a>
